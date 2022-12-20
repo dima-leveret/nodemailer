@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "emailTo": "dimazayac@gmail.com",
+    "name": "Dima Leveret"
+  },
+  {
+    "id": 2,
+    "emailTo": "dmytro.zaichenko@capgemini.com",
+    "name": "Dmytro Zaichenko"
+  }
+]

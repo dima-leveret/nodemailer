@@ -8,6 +8,7 @@ const initValues = {
   email: "",
   subject: "",
   message: "",
+  emailTo: "",
 };
 
 const initState = { values: initValues };
@@ -15,7 +16,7 @@ const initState = { values: initValues };
 export default function Home() {
   const [state, setState] = useState(initState);
 
-  const { values } = state;
+  const { values, error } = state;
 
   const hadleChange = ({ target }) => {
     setState((prev) => {
@@ -27,11 +28,18 @@ export default function Home() {
         },
       };
     });
+
+    console.log(values);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await sendContactForm(values);
+    try {
+      await sendContactForm(values);
+      setState(initState);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -44,7 +52,32 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1>Contact</h1>
+        {error && <h4> {error} </h4>}
         <form onSubmit={handleSubmit} className={styles.form}>
+          <label htmlFor="emailTo" className={styles.label}>
+            Choose email to:
+            {/* <input
+              className={styles.input}
+              id="emailTo"
+              name="emailTo"
+              type="text"
+              list="emails"
+              value={values.name}
+              onChange={hadleChange}
+            /> */}
+            <select
+              onChange={hadleChange}
+              value={values.name}
+              name="emailTo"
+              id="emailTo">
+              <option value="">--Choose email--</option>
+              <option value="dimazayac@gmail.com">dimazayac@gmail.com</option>
+              <option value="dmytro.zaichenko@capgemini.com">
+                dmytro.zaichenko@capgemini.com
+              </option>
+            </select>
+          </label>
+
           <label htmlFor="name" className={styles.label}>
             Name
             <input
