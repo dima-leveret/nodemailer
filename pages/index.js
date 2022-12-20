@@ -67,7 +67,7 @@ export default function Home() {
             /> */}
             <select
               onChange={hadleChange}
-              value={values.name}
+              // value={values.name}
               name="emailTo"
               id="emailTo">
               <option value="">--Choose email--</option>
