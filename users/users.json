@@ -3,12 +3,12 @@
     "id": 1,
     "emailTo": "dimazayac@gmail.com",
     "name": "Dima Leveret",
-    "organisation": "Leveret corp"
+    "organisation": "Leveret-corp"
   },
   {
     "id": 2,
     "emailTo": "dmytro.zaichenko@capgemini.com",
     "name": "Dmytro Zaichenko",
-    "organisation": "Wilando org"
+    "organisation": "Wilando-org"
   }
 ]

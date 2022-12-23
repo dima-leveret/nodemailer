@@ -27,7 +27,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
 
-    if (!data.name || !data.email || !data.subject || !data.message) {
+    if (!data.name || !data.subject || !data.message) {
       return res.status(400).json({ message: "Bad request" });
     }
 

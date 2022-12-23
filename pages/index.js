@@ -1,47 +1,9 @@
 import Head from "next/head";
+import Link from "next/link";
+import users from "../users/users.json";
 import styles from "../styles/Home.module.css";
-import { useState } from "react";
-import { sendContactForm } from "../lib/api";
-
-const initValues = {
-  name: "",
-  email: "",
-  subject: "",
-  message: "",
-  emailTo: "",
-};
-
-const initState = { values: initValues };
 
 export default function Home() {
-  const [state, setState] = useState(initState);
-
-  const { values, error } = state;
-
-  const hadleChange = ({ target }) => {
-    setState((prev) => {
-      return {
-        ...prev,
-        values: {
-          ...prev.values,
-          [target.name]: target.value,
-        },
-      };
-    });
-
-    console.log(values);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await sendContactForm(values);
-      setState(initState);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   return (
     <>
       <Head>
@@ -50,86 +12,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <h1>Contact</h1>
-        {error && <h4> {error} </h4>}
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <label htmlFor="emailTo" className={styles.label}>
-            Choose email to:
-            {/* <input
-              className={styles.input}
-              id="emailTo"
-              name="emailTo"
-              type="text"
-              list="emails"
-              value={values.name}
-              onChange={hadleChange}
-            /> */}
-            <select
-              onChange={hadleChange}
-              // value={values.name}
-              name="emailTo"
-              id="emailTo">
-              <option value="">--Choose email--</option>
-              <option value="dimazayac@gmail.com">dimazayac@gmail.com</option>
-              <option value="dmytro.zaichenko@capgemini.com">
-                dmytro.zaichenko@capgemini.com
-              </option>
-            </select>
-          </label>
-
-          <label htmlFor="name" className={styles.label}>
-            Name
-            <input
-              className={styles.input}
-              id="name"
-              name="name"
-              type="text"
-              value={values.name}
-              onChange={hadleChange}
-            />
-          </label>
-
-          <label htmlFor="name" className={styles.label}>
-            Email
-            <input
-              className={styles.input}
-              id="email"
-              name="email"
-              type="email"
-              value={values.email}
-              onChange={hadleChange}
-            />
-          </label>
-
-          <label htmlFor="subject" className={styles.label}>
-            Subject
-            <input
-              className={styles.input}
-              id="subject"
-              name="subject"
-              type="text"
-              value={values.subject}
-              onChange={hadleChange}
-            />
-          </label>
-
-          <label htmlFor="message" className={styles.label}>
-            Message
-            <textarea
-              className={styles.input}
-              id="message"
-              name="message"
-              type="text"
-              cols={30}
-              rows={5}
-              value={values.message}
-              onChange={hadleChange}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-      </main>
+      <h2> Home page </h2>
+      <div className={styles.users}>
+        {users.map((user) => {
+          return (
+            <Link
+              className={styles.user}
+              key={user.id}
+              href={`/${user.organisation}`}>
+              Contact To {user.emailTo}
+            </Link>
+          );
+        })}
+      </div>
     </>
   );
 }
