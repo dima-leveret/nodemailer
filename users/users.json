@@ -10,5 +10,11 @@
     "emailTo": "dmytro.zaichenko@capgemini.com",
     "name": "Dmytro Zaichenko",
     "organisation": "Wilando-org"
+  },
+  {
+    "id": 3,
+    "emailTo": "jakubjaeschke@gmail.com",
+    "name": "Jakub Jaeschke",
+    "organisation": "chlorekswim"
   }
 ]
