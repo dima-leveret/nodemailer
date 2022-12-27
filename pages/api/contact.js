@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { mailOptions, transporter } from "../../config/nodemailer";
+import { mailOptions, transporter } from "../../components/contactForm.js";
 
 const CONTACT_MESSAGE_FIELDS = {
   name: "Name",
