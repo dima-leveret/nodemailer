@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Contact } from "../components/contactForm";
 
-export default function ContactTo() {
+export default function ContactTo({ users }) {
   return (
     <>
       <Head>
@@ -10,7 +10,18 @@ export default function ContactTo() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Contact />
+      <Contact users={users} />
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:8008/users");
+  const users = await res.json();
+
+  return {
+    props: {
+      users,
+    },
+  };
+};

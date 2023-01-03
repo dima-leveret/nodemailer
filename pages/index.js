@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
-import users from "../users/users.json";
+// import users from "../users/users.json";
 import styles from "../styles/Home.module.css";
+import { AddUserForms } from "../components/addUserForm";
 
-export default function Home() {
+export default function Home({ users }) {
   return (
     <>
       <Head>
@@ -20,11 +21,24 @@ export default function Home() {
               className={styles.user}
               key={user.id}
               href={`/${user.organisation}`}>
-              Contact To {user.emailTo}
+              Contact To {user.email}
             </Link>
           );
         })}
       </div>
+      <hr />
+      <AddUserForms />
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await fetch("http://localhost:8008/users");
+  const users = await res.json();
+
+  return {
+    props: {
+      users,
+    },
+  };
+};

@@ -2,18 +2,18 @@ import styles from "../styles/Contact.module.css";
 import { useState, useEffect } from "react";
 import { sendContactForm } from "../lib/api";
 import { useRouter } from "next/router";
-import users from "../users/users.json";
+// import users from "../users/users.json";
 
 const initValues = {
   name: "",
   subject: "",
   message: "",
-  emailTo: "",
+  email: "",
 };
 
 const initState = { values: initValues };
 
-export const Contact = () => {
+export const Contact = ({ users }) => {
   const [state, setState] = useState(initState);
   const router = useRouter();
   const { contactTo } = router.query;
@@ -28,13 +28,13 @@ export const Contact = () => {
             ...prev,
             values: {
               ...prev.values,
-              emailTo: user.emailTo,
+              email: user.email,
             },
           };
         });
       }
     });
-  }, [contactTo]);
+  }, [contactTo, users]);
 
   const hadleChange = ({ target }) => {
     setState((prev) => {
@@ -61,7 +61,7 @@ export const Contact = () => {
     <main className={styles.main}>
       <h1>Contact to {contactTo}</h1>
       {users.map((user) => {
-        return contactTo === user.organisation && user.emailTo;
+        return contactTo === user.organisation && user.email;
       })}
       {error && <h4> {error} </h4>}
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -102,7 +102,7 @@ export const Contact = () => {
             onChange={hadleChange}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Send</button>
       </form>
     </main>
   );

@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "dimazayac@gmail.com",
+      "name": "Dima Leveret",
+      "organisation": "Leveret-corp"
+    },
+    {
+      "id": 2,
+      "email": "dmytro.zaichenko@capgemini.com",
+      "name": "Dmytro Zaichenko",
+      "organisation": "Wilando-org"
+    },
+    {
+      "id": 3,
+      "email": "jakubjaeschke@gmail.com",
+      "name": "Jakub Jaeschke",
+      "organisation": "chlorekswim"
+    }
+  ]
+}

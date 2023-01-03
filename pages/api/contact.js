@@ -33,7 +33,7 @@ const handler = async (req, res) => {
     try {
       await transporter.sendMail({
         ...mailOptions,
-        to: data.emailTo,
+        to: data.email,
         ...generateEmailContent(data),
         subject: data.subject,
       });
