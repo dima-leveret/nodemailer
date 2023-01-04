@@ -57,6 +57,7 @@ export const Contact = ({ users }) => {
       console.log(error.message);
     }
   };
+
   return (
     <main className={styles.main}>
       <h1>Contact to {contactTo}</h1>

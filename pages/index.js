@@ -3,8 +3,13 @@ import Link from "next/link";
 // import users from "../users/users.json";
 import styles from "../styles/Home.module.css";
 import { AddUserForms } from "../components/addUserForm";
+import { deleteUser } from "../lib/api";
 
 export default function Home({ users }) {
+  const handleClick = (id) => {
+    deleteUser(id);
+  };
+
   return (
     <>
       <Head>
@@ -17,12 +22,12 @@ export default function Home({ users }) {
       <div className={styles.users}>
         {users.map((user) => {
           return (
-            <Link
-              className={styles.user}
-              key={user.id}
-              href={`/${user.organisation}`}>
-              Contact To {user.email}
-            </Link>
+            <div className={styles.user} key={user.id}>
+              <Link href={`/${user.organisation}`}>
+                Contact To {user.email}
+              </Link>
+              <button onClick={() => handleClick(user.id)}>Delete user</button>
+            </div>
           );
         })}
       </div>

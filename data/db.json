@@ -13,10 +13,16 @@
       "organisation": "Wilando-org"
     },
     {
-      "id": 3,
-      "email": "jakubjaeschke@gmail.com",
-      "name": "Jakub Jaeschke",
-      "organisation": "chlorekswim"
+      "name": "DIma",
+      "email": "dimazayac@gmail.com",
+      "organisation": "Dima-corp",
+      "id": 3
+    },
+    {
+      "name": "Kuna",
+      "email": "kuma@mail.com",
+      "organisation": "Kuba swimm",
+      "id": 4
     }
   ]
 }
