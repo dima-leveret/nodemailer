@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Contact } from "../components/contactForm";
+import { getUsers } from "../lib/api";
 
 export default function ContactTo({ users }) {
   return (
@@ -16,8 +17,7 @@ export default function ContactTo({ users }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:8008/users");
-  const users = await res.json();
+  const users = await getUsers();
 
   return {
     props: {

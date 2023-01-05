@@ -3,7 +3,7 @@ import Link from "next/link";
 // import users from "../users/users.json";
 import styles from "../styles/Home.module.css";
 import { AddUserForms } from "../components/addUserForm";
-import { deleteUser } from "../lib/api";
+import { deleteUser, getUsers } from "../lib/api";
 
 export default function Home({ users }) {
   const handleClick = (id) => {
@@ -38,8 +38,7 @@ export default function Home({ users }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:8008/users");
-  const users = await res.json();
+  const users = await getUsers();
 
   return {
     props: {
